@@ -13,6 +13,7 @@ import java.time.format.DateTimeFormatter;
  * @param priority    The priority level of the task (e.g., "High", "Medium", "Low").
  */
 public record Task(String description, LocalTime startTime, LocalTime endTime, String priority) {
+
     /**
      * Checks if this task overlaps with another task.
      * Overlap occurs if the start time of one task is before the end time of the other,
@@ -22,13 +23,13 @@ public record Task(String description, LocalTime startTime, LocalTime endTime, S
      * @return true if the tasks overlap, false otherwise.
      */
     public boolean overlapsWith(Task other) {
-        return this.startTime.isBefore(other.endTime) && this.endTime.isBefore(other.startTime);
+        return this.startTime.isBefore(other.endTime) && this.endTime.isAfter(other.startTime);
     }
 
     @Override
     public String toString() {
-        DateTimeFormatter dtf=DateTimeFormatter.ofPattern("HH:mm");
-        return String.format("$s-%s: %s [%s]",
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("HH:mm");
+        return String.format("%s-%s: %s [%s]",
                 startTime.format(dtf),
                 endTime.format(dtf),
                 description,
