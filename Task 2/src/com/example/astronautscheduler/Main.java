@@ -1,4 +1,3 @@
-// src/com/example/astronautscheduler/Main.java
 package com.example.astronautscheduler;
 
 import com.example.astronautscheduler.exception.InvalidTimeFormatException;
