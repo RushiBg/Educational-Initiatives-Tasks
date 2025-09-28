@@ -1,5 +1,1 @@
-# macOS system files
-.DS_Store
-
-# IDE build output
-out/
+.idea/
